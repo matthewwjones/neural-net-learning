@@ -7,7 +7,6 @@ from neuralnet.neuralnetwork import NeuralNetwork
 
 
 class TestNeuralNetwork(TestCase):
-    training_data = '../../mnist_train_100.csv'
 
     def test_query(self):
         input_nodes = 3
@@ -15,6 +14,8 @@ class TestNeuralNetwork(TestCase):
         hidden_nodes = 3
         learning_rate = 0.3
         neuralnetwork = NeuralNetwork(input_nodes, output_nodes, hidden_nodes, learning_rate)
+
+        training_data = '../../mnist_train_100.csv'
 
         with open(training_data, 'r') as data_file:
             data_list = data_file.readlines()
