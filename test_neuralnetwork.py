@@ -1,3 +1,4 @@
+import os
 from unittest import TestCase
 
 import matplotlib.pyplot as plt
@@ -15,7 +16,7 @@ class TestNeuralNetwork(TestCase):
         learning_rate = 0.3
         neuralnetwork = NeuralNetwork(input_nodes, output_nodes, hidden_nodes, learning_rate)
 
-        training_data = '../../mnist_train_100.csv'
+        training_data = os.path.join(os.path.dirname(__file__), 'mnist_train_100.csv')
 
         with open(training_data, 'r') as data_file:
             data_list = data_file.readlines()
@@ -24,3 +25,4 @@ class TestNeuralNetwork(TestCase):
         image_array = np.asarray(all_values[1:], 'float', ).reshape((28, 28))
         plt.imshow(image_array, cmap='Greys', interpolation='None')
         # plt.show()
+        self.assertEqual(len(image_array[0]), 28)
